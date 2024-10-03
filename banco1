@@ -1,0 +1,137 @@
+import java.util.HashMap; // Importación de la clase HashMap para almacenar usuarios
+import javax.swing.*; // Importación de clases de Swing para la interfaz gráfica
+import java.awt.*; // Importación de clases de AWT para el diseño de la interfaz
+import java.awt.event.*; // Importación de clases para gestionar eventos
+
+/**
+ * La clase BancoLogix representa un sistema bancario que permite gestionar
+ * cuentas de usuarios, incluyendo funcionalidades para depositar, retirar,
+ * transferir dinero y mostrar el historial de transacciones.
+ */
+public class BancoLogix {
+    private HashMap<String, Usuario> usuarios; // Mapa que almacena los usuarios del banco
+    private Usuario usuarioActual; // Usuario que ha iniciado sesión
+
+    /**
+     * Constructor de la clase BancoLogix.
+     * Inicializa la ventana principal y carga los usuarios desde un archivo.
+     */
+    public BancoLogix() {
+        usuarios = new HashMap<>(); // Inicializa el mapa de usuarios
+        cargarUsuarios(); // Carga los usuarios desde el archivo
+        // Configuración de la interfaz gráfica (no mostrada aquí por brevedad)
+    }
+
+    /**
+     * Carga los usuarios desde un archivo de texto y los almacena en el mapa.
+     */
+    private void cargarUsuarios() {
+        // Lógica para cargar usuarios desde un archivo (no mostrada aquí por brevedad)
+    }
+
+    /**
+     * Muestra las opciones disponibles para el usuario tras iniciar sesión.
+     */
+    private void mostrarOpciones() {
+        // Lógica para mostrar opciones (no mostrada aquí por brevedad)
+    }
+
+    /**
+     * Clase interna que representa un usuario del sistema bancario.
+     */
+    class Usuario {
+        private String nombreUsuario; // Nombre del usuario
+        private String contraseña; // Contraseña del usuario
+        private double saldo; // Saldo actual del usuario
+        private String numeroCuenta; // Número de cuenta del usuario
+        private StringBuilder historial; // Historial de transacciones del usuario
+
+        /**
+         * Constructor de la clase Usuario.
+         * 
+         * @param nombreUsuario Nombre del usuario
+         * @param contraseña Contraseña del usuario
+         * @param saldo Saldo inicial del usuario
+         * @param numeroCuenta Número de cuenta del usuario
+         */
+        public Usuario(String nombreUsuario, String contraseña, double saldo, String numeroCuenta) {
+            this.nombreUsuario = nombreUsuario; // Inicializa el nombre del usuario
+            this.contraseña = contraseña; // Inicializa la contraseña del usuario
+            this.saldo = saldo; // Inicializa el saldo del usuario
+            this.numeroCuenta = numeroCuenta; // Inicializa el número de cuenta del usuario
+            this.historial = new StringBuilder(); // Inicializa el historial de transacciones
+        }
+
+        /**
+         * Obtiene el nombre del usuario.
+         * 
+         * @return Nombre del usuario
+         */
+        public String getNombreUsuario() {
+            return nombreUsuario; // Retorna el nombre del usuario
+        }
+
+        /**
+         * Obtiene la contraseña del usuario.
+         * 
+         * @return Contraseña del usuario
+         */
+        public String getContraseña() {
+            return contraseña; // Retorna la contraseña del usuario
+        }
+
+        /**
+         * Obtiene el saldo actual del usuario.
+         * 
+         * @return Saldo actual del usuario
+         */
+        public double getSaldo() {
+            return saldo; // Retorna el saldo actual del usuario
+        }
+
+        /**
+         * Obtiene el número de cuenta del usuario.
+         * 
+         * @return Número de cuenta del usuario
+         */
+        public String getNumeroCuenta() {
+            return numeroCuenta; // Retorna el número de cuenta del usuario
+        }
+
+        /**
+         * Realiza un depósito en la cuenta del usuario.
+         * 
+         * @param cantidad Cantidad de dinero a depositar
+         */
+        public void depositar(double cantidad) {
+            saldo += cantidad; // Aumenta el saldo por la cantidad depositada
+        }
+
+        /**
+         * Realiza un retiro de la cuenta del usuario.
+         * 
+         * @param cantidad Cantidad de dinero a retirar
+         */
+        public void retirar(double cantidad) {
+            saldo -= cantidad; // Disminuye el saldo por la cantidad retirada
+        }
+
+        /**
+         * Agrega un registro al historial de transacciones del usuario.
+         * 
+         * @param registro Registro de la transacción realizada
+         */
+        public void agregarRegistroHistorial(String registro) {
+            historial.append(registro).append("\n"); // Añade el registro al historial con un salto de línea
+        }
+
+        /**
+         * Obtiene el historial de transacciones del usuario.
+         * 
+         * @return Historial de transacciones como una cadena
+         */
+        public String getHistorial() {
+            return historial.toString(); // Retorna el historial como una cadena
+        }
+    }
+}
